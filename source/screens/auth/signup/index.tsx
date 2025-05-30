@@ -108,7 +108,7 @@ const Signup: React.FC<ISignupProps> = () => {
         <ScrollView
           bounces={false}
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingBottom: moderateScale(30) }}
+          contentContainerStyle={styles.scrollContainer}
         >
           <View
             style={{

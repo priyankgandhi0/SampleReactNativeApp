@@ -107,7 +107,11 @@ const Login: React.FC<ILoginProps> = () => {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.flex}
       >
-        <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
+        <ScrollView
+          bounces={false}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.scrollContainer}
+        >
           <View
             style={{
               gap: moderateScale(25),

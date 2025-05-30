@@ -77,6 +77,10 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     textAlign: "center",
   },
+  scrollContainer: {
+    flexGrow: 1,
+    paddingBottom: moderateScale(30),
+  },
 });
 
 export default styles;

@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import React, { useMemo, useState } from "react";
 import { ILoginProps } from "../../../types/navigation.types";
-import styles from "./style";
 import { moderateScale, s } from "react-native-size-matters";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Images } from "../../../theme/images";
@@ -19,18 +18,14 @@ import { Colors } from "../../../theme/colors";
 import CommonTextInput from "../../../components/input";
 import ButtonView from "../../../components/button";
 import Loader from "../../../components/loader";
-import { goBack, navigate } from "../../../navigation/navigationService";
-import {
-  API_METHODS,
-  emailRegex,
-  ENDPOINTS,
-  Navigations,
-} from "../../../constant";
+import { goBack } from "../../../navigation/navigationService";
+import { emailRegex, ENDPOINTS } from "../../../constant";
 import Toast from "react-native-toast-message";
 import { postApi } from "../../../utils/restApi";
 import { useDispatch } from "react-redux";
 import { setCurrentUser } from "../../../actions/userActions";
 import AsyncStorageManager from "../../../utils/AsyncStorageManager";
+import styles from "./style";
 
 const ForgotPassword: React.FC<ILoginProps> = () => {
   const insets = useSafeAreaInsets();
@@ -107,7 +102,11 @@ const ForgotPassword: React.FC<ILoginProps> = () => {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.flex}
       >
-        <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
+        <ScrollView
+          bounces={false}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.scrollContainer}
+        >
           <View
             style={{
               gap: moderateScale(25),
