@@ -30,9 +30,11 @@ npm run android
 yarn android
 ```
 
-Start Metro
+# OR
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+# Start Metro
+
+First, you can run **Metro**, the JavaScript build tool for React Native.
 
 To start the Metro dev server, run the following command from the root of your React Native project:
 
