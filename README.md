@@ -1,5 +1,54 @@
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
+# Features
+
+## Project Structure
+
+The application follows a well-organized structure:
+
+- `source/` - Main application code
+  - `actions/` - Redux actions
+  - `assets/` - Images, fonts, and other static assets
+  - `components/` - Reusable UI components
+  - `constant/` - Application constants and configuration
+  - `navigation/` - Navigation configuration and screens
+  - `reducers/` - Redux reducers
+  - `screens/` - Main application screens
+    - `auth/` - Authentication related screens
+      - `login/` - User login screen
+      - `signup/` - User registration screen
+      - `forgotPassword/` - Password recovery screen
+    - `dashboard/` - Main application screens
+      - `home/` - Home screen
+      - `setting/` - Settings screen
+  - `services/` - API and other service integrations
+  - `theme/` - Application theming and styling
+  - `types/` - TypeScript type definitions
+  - `utils/` - Utility functions and helpers
+
+## Key Features
+
+### Authentication
+
+- User registration and login functionality with maintaining user sessions
+- Password recovery system
+- Secure authentication flow
+
+### Dashboard
+
+- Home screen with main application features
+- Settings screen for user preferences
+- Navigation between different sections
+
+### Technical Features
+
+- Built with React Native for cross-platform compatibility
+- TypeScript for type safety
+- Redux for state management
+- Modern UI/UX design
+- Responsive layout for different screen sizes
+- Following the proper code structure for better readability and easier understanding
+
 # Getting Started
 
 > **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
@@ -32,7 +81,7 @@ yarn android
 
 # OR
 
-# Start Metro
+## Start Metro
 
 First, you can run **Metro**, the JavaScript build tool for React Native.
 
@@ -80,7 +129,7 @@ This is one way to run your app — you can also build it directly from Android 
 
 Now that you have successfully run the app, let's make changes!
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
 
 When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
 
