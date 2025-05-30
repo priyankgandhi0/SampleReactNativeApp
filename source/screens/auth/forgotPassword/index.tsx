@@ -19,7 +19,7 @@ import { Colors } from "../../../theme/colors";
 import CommonTextInput from "../../../components/input";
 import ButtonView from "../../../components/button";
 import Loader from "../../../components/loader";
-import { navigate } from "../../../navigation/navigationService";
+import { goBack, navigate } from "../../../navigation/navigationService";
 import {
   API_METHODS,
   emailRegex,
@@ -32,7 +32,7 @@ import { useDispatch } from "react-redux";
 import { setCurrentUser } from "../../../actions/userActions";
 import AsyncStorageManager from "../../../utils/AsyncStorageManager";
 
-const Login: React.FC<ILoginProps> = () => {
+const ForgotPassword: React.FC<ILoginProps> = () => {
   const insets = useSafeAreaInsets();
   const dispatch = useDispatch();
 
@@ -162,9 +162,7 @@ const Login: React.FC<ILoginProps> = () => {
                 gap: moderateScale(16),
               }}
             >
-              <Text style={styles.contentHeaderText}>
-                Login to your account
-              </Text>
+              <Text style={styles.contentHeaderText}>Forgot Password</Text>
               <CommonTextInput
                 title={"Email Address"}
                 keyboardType={"email-address"}
@@ -176,46 +174,14 @@ const Login: React.FC<ILoginProps> = () => {
                 value={userEmail}
                 onSubmitEditing={() => {}}
               />
-              <CommonTextInput
-                title={"Password"}
-                secureTextEntry={!isShowPassword}
-                returnKeyType={"next"}
-                placeHolder={"Password"}
-                onChangeText={(value: any) => {
-                  setUserPassword(value);
-                }}
-                value={userPassword}
-                onSubmitEditing={() => {}}
-                rightIcon={
-                  isShowPassword ? Images.icn_eye_open : Images.icn_eye_close
-                }
-                iconSize={moderateScale(16)}
-                onPressRightIcon={() => {
-                  setShowPassword(!isShowPassword);
-                }}
-                rightIconStyle={{
-                  tintColor: Colors.black_101826,
-                  paddingVertical: moderateScale(20),
-                }}
-              />
 
-              <ButtonView
-                title={"Forgot Password?"}
-                containerStyle={styles.forgotPassword}
-                textStyle={styles.forgotPasswordText}
-                onPress={() => {
-                  navigate(Navigations.FORGOT_PASSWORD);
-                }}
-              />
-              <ButtonView title={"Login"} onPress={onLogin} />
+              <ButtonView title={"Next"} />
               <TouchableOpacity
                 onPress={() => {
-                  navigate(Navigations.SIGNUP);
+                  goBack();
                 }}
               >
-                <Text style={styles.skipText}>
-                  Don't have an account? Signup
-                </Text>
+                <Text style={styles.skipText}>Back to Login</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -227,4 +193,4 @@ const Login: React.FC<ILoginProps> = () => {
   );
 };
 
-export default Login;
+export default ForgotPassword;

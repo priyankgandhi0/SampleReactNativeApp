@@ -1,10 +1,11 @@
-import { NavigatorScreenParams } from '@react-navigation/native';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { Navigations } from '../constant';
+import { NavigatorScreenParams } from "@react-navigation/native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { Navigations } from "../constant";
 
 export type RootStackParamList = {
   Login: undefined;
   Signup: undefined;
+  ForgotPassword: undefined;
   [Navigations.BOTTOM_TABS]: NavigatorScreenParams<TabParamList>;
 };
 
@@ -17,9 +18,17 @@ export interface TabParamList {
 /**
  * ILoginProps
  */
-export type ILoginProps = NativeStackScreenProps<RootStackParamList, 'Login'>;
+export type ILoginProps = NativeStackScreenProps<RootStackParamList, "Login">;
 
 /**
- * ILoginProps
+ * ISignupProps
  */
-export type ISignupProps = NativeStackScreenProps<RootStackParamList, 'Signup'>;
+export type ISignupProps = NativeStackScreenProps<RootStackParamList, "Signup">;
+
+/**
+ * IForgotPasswordProps
+ */
+export type IForgotPasswordProps = NativeStackScreenProps<
+  RootStackParamList,
+  "ForgotPassword"
+>;

@@ -6,33 +6,33 @@ import {
   ScrollView,
   Image,
   TouchableOpacity,
-} from 'react-native';
-import React, { useMemo, useState } from 'react';
-import { ISignupProps } from '../../../types/navigation.types';
-import styles from './style';
-import { moderateScale, s } from 'react-native-size-matters';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Images } from '../../../theme/images';
-import LinearGradient from 'react-native-linear-gradient';
-import { Metrics } from '../../../theme/metrics';
-import { Colors } from '../../../theme/colors';
-import CommonTextInput from '../../../components/input';
-import ButtonView from '../../../components/button';
-import Loader from '../../../components/loader';
-import { goBack, navigate } from '../../../navigation/navigationService';
-import { postApi } from '../../../utils/restApi';
-import { emailRegex, ENDPOINTS } from '../../../constant';
-import Toast from 'react-native-toast-message';
+} from "react-native";
+import React, { useMemo, useState } from "react";
+import { ISignupProps } from "../../../types/navigation.types";
+import styles from "./style";
+import { moderateScale, s } from "react-native-size-matters";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { Images } from "../../../theme/images";
+import LinearGradient from "react-native-linear-gradient";
+import { Metrics } from "../../../theme/metrics";
+import { Colors } from "../../../theme/colors";
+import CommonTextInput from "../../../components/input";
+import ButtonView from "../../../components/button";
+import Loader from "../../../components/loader";
+import { goBack } from "../../../navigation/navigationService";
+import { postApi } from "../../../utils/restApi";
+import { emailRegex, ENDPOINTS } from "../../../constant";
+import Toast from "react-native-toast-message";
 
 const Signup: React.FC<ISignupProps> = () => {
   const insets = useSafeAreaInsets();
 
   const [currentPage, setCurrentPage] = useState(0);
   const [isShowPassword, setShowPassword] = useState(false);
-  const [userEmail, setUserEmail] = useState('');
-  const [last_name, setLast_name] = useState('');
-  const [first_name, setFirst_name] = useState('');
-  const [userPassword, setUserPassword] = useState('');
+  const [userEmail, setUserEmail] = useState("");
+  const [last_name, setLast_name] = useState("");
+  const [first_name, setFirst_name] = useState("");
+  const [userPassword, setUserPassword] = useState("");
   const [isLoading, setLoading] = useState(false);
 
   const onSignup = async () => {
@@ -40,22 +40,22 @@ const Signup: React.FC<ISignupProps> = () => {
     const password = userPassword.trim();
     if (email.length === 0) {
       Toast.show({
-        type: 'error',
-        text1: 'Please enter email address',
+        type: "error",
+        text1: "Please enter email address",
       });
       return;
     }
     if (!emailRegex.test(email)) {
       Toast.show({
-        type: 'error',
-        text1: 'Please enter valid email address',
+        type: "error",
+        text1: "Please enter valid email address",
       });
       return;
     }
     if (password.length === 0) {
       Toast.show({
-        type: 'error',
-        text1: 'Please enter password',
+        type: "error",
+        text1: "Please enter password",
       });
       return;
     }
@@ -70,13 +70,13 @@ const Signup: React.FC<ISignupProps> = () => {
     setLoading(false);
     if (response?.status === 0) {
       Toast.show({
-        type: 'error',
+        type: "error",
         text1: response?.msg,
       });
     } else {
       Toast.show({
-        type: 'success',
-        text1: 'Account created successfully',
+        type: "success",
+        text1: "Account created successfully",
       });
       goBack();
     }
@@ -88,8 +88,12 @@ const Signup: React.FC<ISignupProps> = () => {
     for (let i = 0; i < numberOfBanners; i++) {
       data.push(
         <View key={i} style={[styles.bannerView, { width: Metrics?.width }]}>
-          <Image source={Images.icn_broadcast} style={styles.bannerImage} resizeMode="contain" />
-        </View>,
+          <Image
+            source={Images.icn_broadcast}
+            style={styles.bannerImage}
+            resizeMode="contain"
+          />
+        </View>
       );
     }
     return data || [];
@@ -98,25 +102,32 @@ const Signup: React.FC<ISignupProps> = () => {
   return (
     <View style={styles.root}>
       <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={styles.flex}>
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={styles.flex}
+      >
         <ScrollView
           bounces={false}
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingBottom: moderateScale(30) }}>
+          contentContainerStyle={{ paddingBottom: moderateScale(30) }}
+        >
           <View
             style={{
               gap: moderateScale(25),
-            }}>
+            }}
+          >
             <View style={{ paddingTop: insets.top > 0 ? insets.top : s(21) }}>
               <LinearGradient
-                colors={['#FFD6EE', '#78B0ED']}
+                colors={["#FFD6EE", "#78B0ED"]}
                 start={{ x: 0, y: 0.75 }}
                 end={{ x: 0.75, y: 0 }}
                 style={[styles.linearGradient, { width: Metrics.width }]}
               />
               <View style={{ gap: moderateScale(6) }}>
-                <Image source={Images.icn_app_logo} style={styles.logo} resizeMode="contain" />
+                <Image
+                  source={Images.icn_app_logo}
+                  style={styles.logo}
+                  resizeMode="contain"
+                />
                 <Text style={[styles.bannerText]}>
                   <Text style={styles.bannerBoldText}>Most Powerful </Text>
                   Webinar Software
@@ -127,9 +138,14 @@ const Signup: React.FC<ISignupProps> = () => {
                 style={[styles.scroll, { width: Metrics.width }]}
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
-                onScroll={event => {
-                  setCurrentPage(Math.round(event.nativeEvent.contentOffset.x / Metrics.width));
-                }}>
+                onScroll={(event) => {
+                  setCurrentPage(
+                    Math.round(
+                      event.nativeEvent.contentOffset.x / Metrics.width
+                    )
+                  );
+                }}
+              >
                 {banners}
               </ScrollView>
               <View style={styles.bottomWrap}>
@@ -138,7 +154,7 @@ const Signup: React.FC<ISignupProps> = () => {
                     <View key={index} style={styles.bannerActiveDot} />
                   ) : (
                     <View key={index} style={styles.bannerInActiveDot} />
-                  ),
+                  )
                 )}
               </View>
             </View>
@@ -146,10 +162,10 @@ const Signup: React.FC<ISignupProps> = () => {
               <Text style={styles.contentHeaderText}>Create your account</Text>
               <View style={styles.inputContainer}>
                 <CommonTextInput
-                  title={'First name'}
-                  keyboardType={'email-address'}
-                  returnKeyType={'next'}
-                  placeHolder={'Enter first name'}
+                  title={"First name"}
+                  keyboardType={"email-address"}
+                  returnKeyType={"next"}
+                  placeHolder={"Enter first name"}
                   onChangeText={(value: string) => {
                     setFirst_name(value);
                   }}
@@ -157,10 +173,10 @@ const Signup: React.FC<ISignupProps> = () => {
                   onSubmitEditing={() => {}}
                 />
                 <CommonTextInput
-                  title={'Last Name'}
-                  keyboardType={'email-address'}
-                  returnKeyType={'next'}
-                  placeHolder={'Enter last name'}
+                  title={"Last Name"}
+                  keyboardType={"email-address"}
+                  returnKeyType={"next"}
+                  placeHolder={"Enter last name"}
                   onChangeText={(value: string) => {
                     setLast_name(value);
                   }}
@@ -168,10 +184,10 @@ const Signup: React.FC<ISignupProps> = () => {
                   onSubmitEditing={() => {}}
                 />
                 <CommonTextInput
-                  title={'Email Address'}
-                  keyboardType={'email-address'}
-                  returnKeyType={'next'}
-                  placeHolder={'Email Address'}
+                  title={"Email Address"}
+                  keyboardType={"email-address"}
+                  returnKeyType={"next"}
+                  placeHolder={"Email Address"}
                   onChangeText={(value: string) => {
                     setUserEmail(value);
                   }}
@@ -179,16 +195,18 @@ const Signup: React.FC<ISignupProps> = () => {
                   onSubmitEditing={() => {}}
                 />
                 <CommonTextInput
-                  title={'Password'}
+                  title={"Password"}
                   secureTextEntry={!isShowPassword}
-                  returnKeyType={'next'}
-                  placeHolder={'Password'}
+                  returnKeyType={"next"}
+                  placeHolder={"Password"}
                   onChangeText={(value: any) => {
                     setUserPassword(value);
                   }}
                   value={userPassword}
                   onSubmitEditing={() => {}}
-                  rightIcon={isShowPassword ? Images.icn_eye_open : Images.icn_eye_close}
+                  rightIcon={
+                    isShowPassword ? Images.icn_eye_open : Images.icn_eye_close
+                  }
                   iconSize={moderateScale(16)}
                   onPressRightIcon={() => {
                     setShowPassword(!isShowPassword);
@@ -200,9 +218,15 @@ const Signup: React.FC<ISignupProps> = () => {
                 />
               </View>
 
-              <ButtonView title={'Signup'} onPress={onSignup} />
-              <TouchableOpacity onPress={() => navigate('Login')}>
-                <Text style={styles.skipText}>Already have an account? Login</Text>
+              <ButtonView title={"Signup"} onPress={onSignup} />
+              <TouchableOpacity
+                onPress={() => {
+                  goBack();
+                }}
+              >
+                <Text style={styles.skipText}>
+                  Already have an account? Login
+                </Text>
               </TouchableOpacity>
             </View>
           </View>
