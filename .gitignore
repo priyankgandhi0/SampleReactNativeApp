@@ -75,5 +75,3 @@ ios/tmp.xcconfig
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
-temp_auto_push.bat
-temp_interactive_push.bat
