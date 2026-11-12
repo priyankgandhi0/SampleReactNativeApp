@@ -1,4 +1,4 @@
-# OSX
+﻿# OSX
 #
 .DS_Store
 
@@ -75,3 +75,5 @@ ios/tmp.xcconfig
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+.env
+.env.*
